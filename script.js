@@ -3,16 +3,23 @@
     var STORAGE_KEY = "app-data-v1";
     var MONTH_NAMES = ["enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre"];
     var WEEKDAY_NAMES = ["domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"];
+    window.onerror = function (msg, url, line, col, error) {
+        var el = document.getElementById("app-content");
+        if (el) {
+            el.innerHTML = '<div style="color:#d1495b;background:#2a1418;border:1px solid #d1495b;border-radius:10px;padding:14px;font-size:12.5px;white-space:pre-wrap;line-height:1.5">⚠️ Error:\n' + msg + '\n(línea ' + line + ')</div>';
+        }
+        return true;
+    };
     var storage = {
-    get: function (key) {
-        var v = localStorage.getItem(key);
-        return Promise.resolve(v != null ? { key: key, value: v } : null);
-    },
-    set: function (key, value) {
-        localStorage.setItem(key, value);
-        return Promise.resolve({ key: key, value: value });
-    }
-};;
+        get: function (key) {
+            var v = localStorage.getItem(key);
+            return Promise.resolve(v != null ? { key: key, value: v } : null);
+        },
+        set: function (key, value) {
+            localStorage.setItem(key, value);
+            return Promise.resolve({ key: key, value: value });
+        }
+    };;
 
     var state = {
         tab: "hoy",
@@ -183,7 +190,10 @@
             return { date: date, w: state.data.entries[date].weight };
         }).filter(function (p) { return p.w != null; });
     }
-
+    function shortDateLabel(dateStr) {
+        var d = parseDate(dateStr);
+        return pad(d.getDate()) + " " + MONTH_NAMES[d.getMonth()].slice(0, 3);
+    }
     function renderWeightChartSvg() {
         var all = weightSeries();
         var pts = all.slice(-90); // últimos ~3 meses de datos cargados
