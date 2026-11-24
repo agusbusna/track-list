@@ -20,7 +20,7 @@ npm run dev        # desarrollo con hot reload (http://localhost:5173)
 npm run typecheck  # revisión de tipos con TypeScript (sin emitir nada)
 npm run build      # typecheck + build de producción en dist/
 npm run preview    # sirve el build de producción
-npm test           # pruebas de lógica y de renderizado
+npm test           # pruebas de lógica, renderizado e interacción
 ```
 
 ## Estructura
@@ -52,6 +52,8 @@ src/
 tests/
   smoke.test.js       Pruebas de fechas, normalización y estadísticas (vía Vite)
   render.test.js      Renderizado en servidor de las tres pestañas y del resumen
+  interaction.test.js Pruebas de interacción con jsdom + Testing Library
+                      (cargar peso, tildar hábitos, teclado y guardado en localStorage)
 tsconfig.json         TypeScript en modo estricto (no emite archivos)
 ```
 
