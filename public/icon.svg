@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Seguimiento">
+    <rect width="512" height="512" rx="112" fill="#12151a" />
+    <path
+        d="M96 340 L200 250 L280 300 L416 168"
+        fill="none"
+        stroke="#8fbfe0"
+        stroke-width="34"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+    />
+    <circle cx="416" cy="168" r="34" fill="#e3b341" />
+    <rect x="96" y="392" width="320" height="28" rx="14" fill="#2e3440" />
+</svg>

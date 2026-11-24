@@ -1,0 +1,20 @@
+{
+    "name": "Seguimiento",
+    "short_name": "Seguimiento",
+    "description": "Seguimiento personal de hábitos, peso y tiempo de pantalla.",
+    "lang": "es",
+    "start_url": "/",
+    "scope": "/",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "background_color": "#12151a",
+    "theme_color": "#12151a",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ]
+}
