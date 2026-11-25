@@ -6,10 +6,13 @@
   "description": "Seguimiento de hábitos, peso y tiempo de pantalla",
   "scripts": {
     "dev": "vite",
+    "icons": "node scripts/generate-icons.mjs",
+    "prebuild": "node scripts/generate-icons.mjs",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview",
+    "server": "node server/index.mjs",
     "typecheck": "tsc --noEmit",
-    "test": "node tests/smoke.test.js && node tests/render.test.js && node tests/interaction.test.js"
+    "test": "node tests/smoke.test.js && node tests/render.test.js && node tests/interaction.test.js && node tests/sync.test.js"
   },
   "dependencies": {
     "react": "^19.3.0",

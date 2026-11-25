@@ -705,6 +705,20 @@ button.habit-row:active {
     background: var(--border);
 }
 
+.data-btn:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.data-note code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1px 5px;
+}
+
 .data-btn.primary {
     background: var(--gold);
     border-color: var(--gold);

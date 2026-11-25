@@ -4,6 +4,7 @@ import { pad } from "../lib/dates.js";
 import { readDataFile } from "../lib/storage.js";
 import type { AppData, Feedback, Habit, HabitType, Settings } from "../types.js";
 import ConfirmDialog from "./ConfirmDialog.jsx";
+import SyncPanel from "./SyncPanel.jsx";
 
 function parseNumber(raw: string): number | null {
     const n = Number(String(raw).trim().replace(",", "."));
@@ -198,6 +199,8 @@ export default function HabitosTab({ data, onAddHabit, onDeleteHabit, onSetGoal,
                     </div>
                 </div>
             </div>
+
+            <SyncPanel data={data} onImport={onImport} />
 
             <div className="section-label">Tus datos</div>
             <div className="form-card data-card">

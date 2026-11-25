@@ -8,7 +8,10 @@ export interface ConfirmDialogProps {
     cancelLabel?: string;
     destructive?: boolean;
     onConfirm: () => void;
+    /** Botón "cancelar" (y Escape/clic afuera, salvo que se pase `onDismiss`). */
     onCancel: () => void;
+    /** Qué hace Escape y el clic afuera. Por defecto, lo mismo que onCancel. */
+    onDismiss?: () => void;
 }
 
 /**
@@ -23,21 +26,24 @@ export default function ConfirmDialog({
     cancelLabel = "Cancelar",
     destructive = false,
     onConfirm,
-    onCancel
+    onCancel,
+    onDismiss
 }: ConfirmDialogProps) {
+    const dismiss = onDismiss || onCancel;
+
     useEffect(() => {
         if (!open) return undefined;
         const onKey = (event: KeyboardEvent) => {
-            if (event.key === "Escape") onCancel();
+            if (event.key === "Escape") dismiss();
         };
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
-    }, [open, onCancel]);
+    }, [open, dismiss]);
 
     if (!open) return null;
 
     return (
-        <div className="dialog-backdrop" role="presentation" onClick={onCancel}>
+        <div className="dialog-backdrop" role="presentation" onClick={dismiss}>
             <div
                 className="dialog"
                 role="alertdialog"
